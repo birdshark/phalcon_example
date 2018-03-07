@@ -1,6 +1,6 @@
 <?php
 
-class News extends \Phalcon\Mvc\Model
+class NewsCopy extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -39,7 +39,7 @@ class News extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("test");
-        $this->setSource("news");
+        $this->setSource("news_copy");
     }
 
     /**
@@ -49,14 +49,14 @@ class News extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'news';
+        return 'news_copy';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News[]|News|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return NewsCopy[]|NewsCopy|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -67,7 +67,7 @@ class News extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News|\Phalcon\Mvc\Model\ResultInterface
+     * @return NewsCopy|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

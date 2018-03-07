@@ -87,3 +87,6 @@ $RECYCLE.BIN/
 # PhpStorm
 *.idea
 *.phalcon
+
+#composer library
+/vendor

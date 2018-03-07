@@ -1,37 +1,21 @@
 <?php
 
-class News extends \Phalcon\Mvc\Model
+class Migrations extends \Phalcon\Mvc\Model
 {
 
     /**
      *
+     * @var string
+     * @Column(column="migration", type="string", length=255, nullable=false)
+     */
+    public $migration;
+
+    /**
+     *
      * @var integer
-     * @Primary
-     * @Identity
-     * @Column(column="id", type="integer", length=11, nullable=false)
+     * @Column(column="batch", type="integer", length=11, nullable=false)
      */
-    public $id;
-
-    /**
-     *
-     * @var string
-     * @Column(column="title", type="string", length=1000, nullable=false)
-     */
-    public $title;
-
-    /**
-     *
-     * @var string
-     * @Column(column="content", type="string", nullable=false)
-     */
-    public $content;
-
-    /**
-     *
-     * @var string
-     * @Column(column="url", type="string", length=128, nullable=false)
-     */
-    public $url;
+    public $batch;
 
     /**
      * Initialize method for model.
@@ -39,7 +23,7 @@ class News extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("test");
-        $this->setSource("news");
+        $this->setSource("migrations");
     }
 
     /**
@@ -49,14 +33,14 @@ class News extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'news';
+        return 'migrations';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News[]|News|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return Migrations[]|Migrations|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -67,7 +51,7 @@ class News extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News|\Phalcon\Mvc\Model\ResultInterface
+     * @return Migrations|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

@@ -1,37 +1,23 @@
 <?php
 
-class News extends \Phalcon\Mvc\Model
+class RoleAdmin extends \Phalcon\Mvc\Model
 {
 
     /**
      *
      * @var integer
      * @Primary
-     * @Identity
-     * @Column(column="id", type="integer", length=11, nullable=false)
+     * @Column(column="admin_id", type="integer", length=10, nullable=false)
      */
-    public $id;
+    public $admin_id;
 
     /**
      *
-     * @var string
-     * @Column(column="title", type="string", length=1000, nullable=false)
+     * @var integer
+     * @Primary
+     * @Column(column="role_id", type="integer", length=10, nullable=false)
      */
-    public $title;
-
-    /**
-     *
-     * @var string
-     * @Column(column="content", type="string", nullable=false)
-     */
-    public $content;
-
-    /**
-     *
-     * @var string
-     * @Column(column="url", type="string", length=128, nullable=false)
-     */
-    public $url;
+    public $role_id;
 
     /**
      * Initialize method for model.
@@ -39,7 +25,9 @@ class News extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("test");
-        $this->setSource("news");
+        $this->setSource("role_admin");
+        $this->belongsTo('admin_id', '\Admins', 'id', ['alias' => 'Admins']);
+        $this->belongsTo('role_id', '\Roles', 'id', ['alias' => 'Roles']);
     }
 
     /**
@@ -49,14 +37,14 @@ class News extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'news';
+        return 'role_admin';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News[]|News|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return RoleAdmin[]|RoleAdmin|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -67,7 +55,7 @@ class News extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News|\Phalcon\Mvc\Model\ResultInterface
+     * @return RoleAdmin|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

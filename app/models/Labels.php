@@ -1,6 +1,6 @@
 <?php
 
-class News extends \Phalcon\Mvc\Model
+class Labels extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -8,30 +8,37 @@ class News extends \Phalcon\Mvc\Model
      * @var integer
      * @Primary
      * @Identity
-     * @Column(column="id", type="integer", length=11, nullable=false)
+     * @Column(column="label_id", type="integer", length=10, nullable=false)
      */
-    public $id;
+    public $label_id;
 
     /**
      *
      * @var string
-     * @Column(column="title", type="string", length=1000, nullable=false)
+     * @Column(column="label_name", type="string", length=128, nullable=false)
      */
-    public $title;
+    public $label_name;
+
+    /**
+     *
+     * @var integer
+     * @Column(column="label_status", type="integer", length=4, nullable=false)
+     */
+    public $label_status;
 
     /**
      *
      * @var string
-     * @Column(column="content", type="string", nullable=false)
+     * @Column(column="created_at", type="string", nullable=true)
      */
-    public $content;
+    public $created_at;
 
     /**
      *
      * @var string
-     * @Column(column="url", type="string", length=128, nullable=false)
+     * @Column(column="updated_at", type="string", nullable=true)
      */
-    public $url;
+    public $updated_at;
 
     /**
      * Initialize method for model.
@@ -39,7 +46,7 @@ class News extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema("test");
-        $this->setSource("news");
+        $this->setSource("labels");
     }
 
     /**
@@ -49,14 +56,14 @@ class News extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'news';
+        return 'labels';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News[]|News|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return Labels[]|Labels|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -67,7 +74,7 @@ class News extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return News|\Phalcon\Mvc\Model\ResultInterface
+     * @return Labels|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

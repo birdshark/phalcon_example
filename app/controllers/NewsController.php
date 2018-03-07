@@ -1,6 +1,6 @@
 <?php
 
-class NewsController extends \Phalcon\Mvc\Controller
+class NewsController extends ControllerBase
 {
 
     public function indexAction()
